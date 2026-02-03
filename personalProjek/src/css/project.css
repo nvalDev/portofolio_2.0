@@ -1,0 +1,201 @@
+/* PROJECT: MISSION LOGS */
+
+.project-section {
+    position: relative;
+    padding: 6rem 0;
+}
+
+/* SECTION HEADER */
+.section-header-wrapper {
+    position: relative;
+}
+
+/* ROBOTIC CARD */
+.robotic-card {
+    background: rgba(5, 5, 5, 0.9);
+    border: 1px solid #333;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* For cleaning up corners */
+}
+
+/* Hover Effect: Glow & Lift */
+.robotic-card:hover {
+    border-color: #ff0033;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 0, 51, 0.1);
+}
+
+.robotic-card:hover .corner-decor {
+    border-color: #ff0033;
+    width: 20px;
+    height: 20px;
+}
+
+/* Top ID Bar */
+.card-header-act {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    padding: 8px 15px;
+    border-bottom: 1px solid #333;
+    color: #666;
+    font-size: 0.75rem;
+}
+
+.card-header-act .status-dot {
+    width: 6px;
+    height: 6px;
+    background: #ff0033;
+    border-radius: 50%;
+}
+
+.blink {
+    animation: blink 2s infinite;
+}
+
+/* Image Area */
+.card-img-container {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #333;
+    background-color: #000;
+}
+
+.card-img-container img {
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: grayscale(100%) contrast(1.2) brightness(0.8);
+    min-height: 200px;
+    width: 100%;
+    height: 220px; /* Fixed height for consistency */
+    object-fit: cover;
+}
+
+.robotic-card:hover .card-img-container img {
+    filter: grayscale(0%) contrast(1.1) brightness(1);
+    transform: scale(1.05);
+}
+
+/* Image Overlay (View Data) */
+.img-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay for text legibility */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.robotic-card:hover .img-overlay {
+    opacity: 1;
+}
+
+.view-btn {
+    background: rgba(255, 0, 51, 0.1);
+    color: #ff0033;
+    padding: 8px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid #ff0033;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(255, 0, 51, 0.2);
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+    background: #ff0033;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 0, 51, 0.6);
+}
+
+/* Content Body */
+.card-body-robotic {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+.status-badge {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #aaa;
+    border-radius: 2px;
+    font-family: 'Courier New', monospace;
+    border: 1px solid #333;
+}
+
+.project-desc {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    font-family: 'Outfit', sans-serif;
+}
+
+.tech-stack {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: #ff0033;
+    opacity: 0.8;
+}
+
+/* Corner Decor */
+.corner-decor {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid #333;
+    border-right: 2px solid #333;
+    transition: all 0.3s ease;
+}
+
+/* New Animations for Link Preview */
+.scan-line-anim {
+    width: 100%;
+    height: 2px;
+    background: #ff0033;
+    box-shadow: 0 0 10px #ff0033;
+    animation: scanX 1.5s ease-in-out infinite;
+    margin-top: 5px;
+}
+
+@keyframes scanX {
+    0% { transform: scaleX(0); opacity: 0; }
+    50% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(0); opacity: 0; }
+}
+
+.overlay-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

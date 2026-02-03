@@ -1,0 +1,92 @@
+/* =========================================
+   RESPONSIVE OVERRIDES (MOBILE/TABLET)
+   ========================================= */
+
+/* --- GLOBAL MOBILE FIXES --- */
+@media (max-width: 768px) {
+    
+    /* 1. SECTION SPACING */
+    .hero-container, 
+    .about-section, 
+    .project-section, 
+    .contact-section {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    /* 2. HERO ADJUSTMENTS */
+    .hero-container {
+        align-items: center; /* Center vertically manually */
+        padding-top: 100px !important; /* Account for navbar */
+    }
+
+    .hero-content {
+        padding-left: 0 !important; /* Remove desktop offset */
+        text-align: center; /* Center alignment for mobile */
+        align-items: center;
+    }
+
+    /* Hide the left ruler line on mobile as it conflicts with centered text */
+    .hero-container::before {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 2.5rem !important; /* Smaller title */
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        margin: 0 auto 2rem auto; /* Center subtitle */
+    }
+
+    .hero-text {
+        font-size: 0.9rem;
+        padding-left: 0 !important;
+        border-left: none !important;
+        margin-bottom: 2rem;
+        border-top: 1px solid #333; /* Switch to top border */
+        padding-top: 1rem;
+    }
+
+    .hero-button {
+        width: 100%; /* Full width button */
+        padding: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    /* 3. ABOUT & CONTACT PANELS */
+    .mech-border {
+        padding: 1.5rem !important; /* Reduce internal padding */
+    }
+    
+    .contact-section .row,
+    .about-section .row {
+        gap: 30px; /* Add space between stacked columns */
+    }
+
+    /* 4. NAVBAR ADJUSTMENTS */
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    /* 5. FONTS */
+    h1, h2, h3 {
+        word-wrap: break-word; /* Prevent long words breaking layout */
+    }
+}
+
+/* --- TABLET ADJUSTMENTS --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-content {
+        padding-left: 5%;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+}

@@ -1,0 +1,106 @@
+/* NAVBAR STICKY FIX */
+.fixed-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  height: 70px;
+}
+
+body, .main-content {
+  padding-top: 70px; /* Matched to new navbar height */
+}
+
+/* NAVBAR: HUD STYLE */
+.navbar {
+  background: rgba(10, 11, 14, 0.85) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-primary); /* Primary Scanline Border */
+  padding: 1rem 0;
+}
+
+/* Add a scanline animation to navbar bottom */
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; width: 0%; height: 2px;
+  background: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+  animation: hudLoad 2s ease-out forwards;
+}
+
+@keyframes hudLoad {
+  to { width: 100%; }
+}
+
+/* BRAND STYLE */
+.brand-text {
+  font-family: var(--font-heading);
+  color: var(--color-primary) !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+/* HOVER EFFECTS */
+.navbar-brand {
+  padding: 0.2rem 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.02);
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  color: var(--color-text-main) !important;
+  font-weight: 500;
+  margin: 0 5px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--color-primary);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--color-primary) !important;
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
+.hover-red {
+  /* Kept for backward compatibility but redefined */
+  color: var(--color-text-main) !important;
+}
+
+.hover-red:hover {
+  color: var(--color-primary) !important;
+}
+
+/* Toggler Customization */
+.navbar-toggler {
+  border: none;
+  color: var(--color-text-main);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Ensure no overflow conflicts */
+body, #root {
+  overflow-x: hidden; /* Changed to hidden to prevent side scroll */
+}

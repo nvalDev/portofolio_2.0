@@ -1,0 +1,136 @@
+/* ROBOTIC CONTACT */
+
+.contact-section {
+    position: relative;
+    padding-bottom: 5rem;
+}
+
+/* --- Robotic Input Override --- */
+input.robotic-input,
+textarea.robotic-input {
+    background: rgba(10, 10, 10, 0.6) !important; /* Force darker background */
+    border: 1px solid #333;
+    border-left: 3px solid #333; /* Default state */
+    border-radius: 0;
+    padding: 1.2rem;
+    color: #f0f0f0 !important; /* Force white text */
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Remove default bootstrap focus glow */
+input.robotic-input:focus,
+textarea.robotic-input:focus {
+    background: rgba(20, 0, 5, 0.8) !important;
+    border-color: var(--color-primary);
+    border-left-color: var(--color-primary);
+    box-shadow: 
+        inset 0 0 20px rgba(255, 0, 51, 0.1),
+        0 0 10px rgba(255, 0, 51, 0.2);
+    color: #fff !important;
+    outline: none;
+}
+
+/* Handle Autofill - Webkit */
+input.robotic-input:-webkit-autofill,
+input.robotic-input:-webkit-autofill:hover, 
+input.robotic-input:-webkit-autofill:focus, 
+textarea.robotic-input:-webkit-autofill,
+textarea.robotic-input:-webkit-autofill:hover,
+textarea.robotic-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.robotic-input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+/* Input Label Group */
+.form-label {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* --- Robotic Button --- */
+.robotic-btn {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.robotic-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
+}
+
+.robotic-btn:hover::before {
+    left: 100%; /* Swipe effect */
+}
+
+.robotic-btn:hover {
+    background: white;
+    color: var(--color-primary);
+    box-shadow: 0 0 20px var(--color-primary);
+}
+
+/* --- Decor --- */
+.status-blink {
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    animation: blink 0.5s infinite;
+}
+
+.monospace {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+/* Success Message Box */
+.success-transmission {
+    border: 1px solid #0f0;
+    background: rgba(0, 20, 0, 0.8);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+.success-transmission::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: #0f0;
+    animation: scanSuccess 2s infinite;
+}
+
+@keyframes scanSuccess {
+    0% { top: 0; opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}

@@ -1,0 +1,80 @@
+/* Robotic Footer Styles */
+.robotic-footer {
+  background-color: #020202;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #333;
+  overflow: hidden;
+  z-index: 100; /* High z-index to stay visible */
+}
+
+/* Decoration Bar */
+.footer-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #ff0033 50%, transparent 100%);
+    box-shadow: 0 0 10px #ff0033;
+}
+
+/* Logo */
+.footer-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ff0033;
+    padding: 2px;
+    box-shadow: 0 0 10px rgba(255, 0, 51, 0.3);
+}
+
+.footer-brand h5 {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.monospace {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+}
+
+/* System Status */
+.system-status {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 0, 51, 0.05);
+    padding: 5px 15px;
+    border: 1px solid rgba(255, 0, 51, 0.2);
+    border-radius: 2px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff0033;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 5px #ff0033;
+    animation: blink 2s infinite;
+}
+
+.scrolling-text {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .robotic-footer .row {
+        gap: 20px;
+    }
+}

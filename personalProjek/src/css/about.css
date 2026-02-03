@@ -1,0 +1,156 @@
+/* ENDFIELD ROBOTIC ABOUT */
+.about-section {
+  background-color: var(--color-bg);
+  padding: 8rem 0;
+  position: relative;
+  border-top: 1px solid var(--color-border);
+  background-image: linear-gradient(0deg, transparent 95%, rgba(255, 0, 51, 0.05) 100%);
+  background-size: 100% 50px;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 4rem 0 2rem 0; /* Reduced padding on mobile */
+  }
+}
+
+/* Robotic Card Panel */
+.vintage-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 3rem;
+  clip-path: var(--clip-bevel); 
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tech Decals */
+.vintage-card::after {
+  content: "SYS_DIAGNOSTIC // RUNNING";
+  position: absolute;
+  bottom: 1rem; right: 1rem;
+  font-family: var(--font-mono);
+  color: var(--color-border);
+  font-size: 0.7rem;
+}
+
+.section-title {
+  color: var(--color-accent);
+  background: transparent;
+  display: inline-block;
+  padding: 0;
+  font-size: 3rem;
+  border: none;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem; /* Reduced font size */
+        margin-bottom: 1.5rem;
+    }
+}
+
+.about-text {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  border-left: 1px solid var(--color-border);
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-text.lead {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  border-left: 3px solid var(--color-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .about-text.lead {
+        font-size: 1.1rem;
+    }
+}
+
+/* Skill Chips - Holographic */
+.skills-list li {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  border-radius: 0;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-list li::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 2px; height: 100%;
+  background: var(--color-primary);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.skills-list li:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(255, 0, 51, 0.05);
+  box-shadow: 0 0 15px var(--color-primary-dim);
+}
+
+.skills-list li:hover::before { opacity: 1; }
+
+/* Image Frame */
+.vintage-frame {
+  padding: 5px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  position: relative;
+}
+
+.vintage-frame::before {
+  content: "";
+  position: absolute;
+  top: -5px; left: -5px; right: -5px; bottom: -5px;
+  border: 1px solid var(--color-primary);
+  opacity: 0.3;
+  clip-path: polygon(0 0, 20px 0, 0 20px, 0 0, 100% 0, 100% 20px, 80px 0); /* Abstract incomplete border */
+}
+
+.vintage-image {
+  filter: grayscale(100%) contrast(1.2) brightness(0.8);
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+
+.vintage-frame:hover .vintage-image {
+  filter: grayscale(0%) contrast(1.1) brightness(1);
+  opacity: 1;
+}
+
+
+/* Divider removed for clean look */
+.vintage-divider { display: none; }
+
+/* Animations */
+.animate-fadeIn {
+  animation: fadeIn 1s var(--ease-smooth) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Clean up old pseudo elements */
+.about-section::before { display: none; }
+.skills-list li::before { display: none; }
