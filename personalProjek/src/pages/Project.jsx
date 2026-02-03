@@ -7,6 +7,7 @@ import { GlitchText } from "../components/GlitchText";
 import { useLanguage } from "../context/LanguageContext";
 import { RunnableText } from "../components/text/RunnableText";
 import "../css/project.css";
+ import project1Img from "../assets/project-1.png";
 
 // Tilt Wrapper Component
 const TiltCard = ({ children, options, className }) => {
@@ -34,7 +35,7 @@ const Project = () => {
             description: "Web travel mini yang visual nya keren dan simpel",
             status: "COMPLETE",
             tags: ["PHP", "Bootstrap", "JS"],
-            image: "src/assets/project-1.png",
+            image: project1Img,
             link: "https://example.com/project-zero"
         },
         {
