@@ -5,7 +5,6 @@ import CyberCard from "../components/CyberCard";
 import { useLanguage } from "../context/LanguageContext";
 import { RunnableText } from "../components/text/RunnableText";
 import "../css/about.css";
-import hackerImg from "../assets/hacker.jpeg";
 
 const About = () => {
     const { t } = useLanguage();
@@ -70,7 +69,7 @@ const About = () => {
             <CyberCard delay={0.3} className="interactive-card">
               <div className="position-relative" style={{ overflow: 'hidden' }}>
                   <img
-                    src={hackerImg}
+                    src="/hacker.jpeg"
                     alt="Profile"
                     className="img-fluid"
                     style={{width: '100%', filter: 'grayscale(100%) contrast(1.2)'}}
