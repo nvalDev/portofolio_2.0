@@ -8,7 +8,7 @@ import { RunnableText } from "../components/text/RunnableText";
 import "../css/contact.css";
 
 // Reusable Input Component with sound effect/animation
-const InteractiveInput = ({ label, type = "text", placeholder, as, rows, value, onChange, listening }) => {
+const InteractiveInput = ({ label, name, type = "text", placeholder, as, rows, value, onChange, listening }) => {
     const [focused, setFocused] = useState(false);
 
     return (
@@ -22,6 +22,7 @@ const InteractiveInput = ({ label, type = "text", placeholder, as, rows, value, 
                 transition={{ type: "spring", stiffness: 300 }}
             >
                 <Form.Control 
+                    name={name}
                     as={as}
                     rows={rows}
                     type={type} 
@@ -45,31 +46,40 @@ const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleChange = (e) => {
-      // Simulate checking/validating sound could go here
-      setFormData({...formData, [e.target.type === 'textarea' ? 'message' : e.target.type]: e.target.value });
+      setFormData({...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate complex transmission
     const btn = e.nativeEvent.submitter;
     if(btn) btn.innerHTML = "ENCRYPTING & SENDING...";
     
-    setTimeout(() => {
+    fetch("https://formsubmit.co/ajax/anaufalahmaddanial@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
         setSubmitted(true);
         // Reset after 4 seconds
         setTimeout(() => {
             setSubmitted(false);
             setFormData({ name: '', email: '', message: '' });
-            // For button text injection which is innerHTML, we should use base text only to avoid HTML issues or use ReactDOM.render
-    // But since this is a simulation, let's just strip furigana for the button innerHTML update
-    if(btn) {
-        const sendText = t('contact.sendBtn');
-        const cleanSendText = sendText.includes('|') ? sendText.split('|')[0] : sendText;
-        btn.innerHTML = `${cleanSendText} <i class="bi bi-broadcast ms-2"></i>`;
-    }
+            if(btn) {
+                const sendText = t('contact.sendBtn');
+                const cleanSendText = sendText.includes('|') ? sendText.split('|')[0] : sendText;
+                btn.innerHTML = `${cleanSendText} <i class="bi bi-broadcast ms-2"></i>`;
+            }
         }, 4000);
-    }, 1500);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        if(btn) btn.innerHTML = "TRANSMISSION FAILED";
+    });
   };
 
   return (
@@ -116,27 +126,36 @@ const Contact = () => {
                             <Row>
                                 <Col md={6}>
                                     <InteractiveInput 
+                                        name="name"
                                         label={t("contact.nameLabel")} 
                                         placeholder={t("contact.namePlace")}
-                                        listening={t("contact.listening")} 
+                                        listening={t("contact.listening")}
+                                        value={formData.name}
+                                        onChange={handleChange}
                                     />
                                 </Col>
                                 <Col md={6}>
                                     <InteractiveInput 
+                                        name="email"
                                         label={t("contact.emailLabel")} 
                                         type="email"
                                         placeholder={t("contact.emailPlace")}
-                                        listening={t("contact.listening")} 
+                                        listening={t("contact.listening")}
+                                        value={formData.email}
+                                        onChange={handleChange}
                                     />
                                 </Col>
                             </Row>
 
                             <InteractiveInput 
+                                name="message"
                                 label={t("contact.msgLabel")}
                                 as="textarea" 
                                 rows={5}
                                 placeholder={t("contact.msgPlace")}
-                                listening={t("contact.listening")} 
+                                listening={t("contact.listening")}
+                                value={formData.message}
+                                onChange={handleChange}
                             />
 
                             <motion.button 
