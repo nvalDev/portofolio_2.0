@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { RunnableText } from './text/RunnableText';
 import '../css/entrance.css';
+import logoImg from '../assets/LOGO-NVALDEVVVV.jpg';
 
 const EntranceScreen = ({ onComplete }) => {
     const { t } = useLanguage();
@@ -104,7 +105,20 @@ const EntranceScreen = ({ onComplete }) => {
                     style={{zIndex: 100, cursor: 'pointer', background: 'rgba(0,0,0,0.8)'}}
                     onClick={() => setPhase('boot')}
                 >
-                    <div className="text-center blink-anim">
+                    <div className="text-center blink-anim d-flex flex-column align-items-center">
+                        <img 
+                            src={logoImg} 
+                            style={{
+                                width: '80px', 
+                                height: '80px', 
+                                border: '1px solid var(--color-primary)', 
+                                padding: '5px',
+                                marginBottom: '20px',
+                                filter: 'grayscale(100%)',
+                                boxShadow: '0 0 15px var(--color-primary)'
+                            }}
+                            alt="Logo"
+                        />
                         <div style={{
                             border: '1px solid var(--color-primary)', 
                             padding: '15px 30px', 
