@@ -30,7 +30,9 @@ import Project from './pages/Project.jsx';
 import Contact from './pages/Contact.jsx';
 
 const Master = () => {
-    const [showEntrance, setShowEntrance] = useState(true);
+    const [showEntrance, setShowEntrance] = useState(() => {
+        return !sessionStorage.getItem('hasVisited');
+    });
     const [glitchActive, setGlitchActive] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -64,7 +66,10 @@ const Master = () => {
       />
 
       {/* Initial Entrance Animation */}
-      {showEntrance && <EntranceScreen onComplete={() => setShowEntrance(false)} />}
+      {showEntrance && <EntranceScreen onComplete={() => {
+          setShowEntrance(false);
+          sessionStorage.setItem('hasVisited', 'true');
+      }} />}
 
       <TechHeader />
       <ThreeBackground />
