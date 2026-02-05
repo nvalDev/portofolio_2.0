@@ -68,20 +68,54 @@ const About = () => {
           {/* Image/Profile Card */}
           <div className="col-lg-6 mt-4 mt-lg-0">
             <CyberCard delay={0.3} className="interactive-card">
-              <div className="position-relative" style={{ overflow: 'hidden' }}>
-                  <img
+              <motion.div 
+                className="position-relative" 
+                style={{ overflow: 'hidden', borderRadius: '4px' }}
+                initial="initial"
+                whileInView="animate"
+                whileHover="hover"
+                viewport={{ once: true }}
+              >
+                  <motion.img
                     src={hackerImg}
                     alt="Profile"
                     className="img-fluid"
-                    style={{width: '100%', filter: 'grayscale(100%) contrast(1.2)'}}
+                    style={{width: '100%', objectFit: 'cover'}}
+                    variants={{
+                        initial: { scale: 1.2, filter: "grayscale(100%) contrast(1.2) brightness(0.8)" },
+                        animate: { scale: 1, filter: "grayscale(100%) contrast(1.2) brightness(0.8)", transition: { duration: 1.5, ease: "easeOut" } },
+                        hover: { scale: 1.1, filter: "grayscale(0%) contrast(1.1) brightness(1)", transition: { duration: 0.4 } }
+                    }}
                   />
-                  {/* Image Glitch Overlay */}
-                  <div style={{
+                  
+                  {/* Red Glitch Overlay - Fades out on hover */}
+                  <motion.div 
+                    style={{
                       position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-                      background: 'linear-gradient(rgba(255, 0, 51, 0.1), transparent)',
-                      pointerEvents: 'none'
-                  }}></div>
-              </div>
+                      background: 'linear-gradient(180deg, rgba(255, 0, 51, 0.2) 0%, transparent 100%)',
+                      pointerEvents: 'none',
+                      zIndex: 1
+                    }}
+                    variants={{
+                        initial: { opacity: 0.8 },
+                        animate: { opacity: 0.6 },
+                        hover: { opacity: 0 }
+                    }}
+                  />
+
+                  {/* High-speed scanline */}
+                  <motion.div
+                    style={{
+                        position: 'absolute', left: 0, width: '100%', height: '2px',
+                        background: 'rgba(255, 0, 51, 0.8)',
+                        boxShadow: '0 0 15px rgba(255, 0, 51, 0.8)',
+                        zIndex: 2, pointerEvents: 'none'
+                    }}
+                    initial={{ top: '-10%' }}
+                    animate={{ top: ['0%', '100%'] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  />
+              </motion.div>
             </CyberCard>
           </div>
         </div>
